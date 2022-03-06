@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dynamic Input Fields</title>
+  </head>
+  <body>
+    <style>
+      .moreless {
+        text-align: center;
+      }
+      #fields {
+        text-align: center;
+      }
+    </style>
+
+    <div class="moreless">
+      <a id="less" href="#">Less</a>
+      <a id="more" href="#">More</a>
+    </div>
+    <br />
+    <div id="fields">
+      <input />
+      <br />
+      <br />
+      <input />
+      <br />
+      <br />
+      <input />
+      <br />
+      <br />
+    </div>
+    <script>
+      let less = document.getElementById("less");
+      let more = document.getElementById("more");
+      let inputFields = document.getElementById("fields");
+
+      less.addEventListener("click", (e) => {
+        console.log("Hola");
+        if (inputFields.getElementsByTagName("input").length > 0) {
+          for (let i = 0; i < 3; i++) {
+            inputFields.removeChild(inputFields.lastElementChild);
+          }
+        }
+      });
+
+      more.addEventListener("click", (e) => {
+        if (inputFields.getElementsByTagName("input").length < 5) {
+          inputFields.appendChild(document.createElement("input"));
+          addInputDoms(inputFields, "br");
+          addInputDoms(inputFields, "br");
+        }
+      });
+      //service method if needed
+      function addInputDoms(parent, child) {
+        parent.appendChild(document.createElement(child));
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Input-fields</title>
+  </head>
+  <style>
+    #main {
+      text-align: center;
+    }
+  </style>
+  <body>
+    <div id="main">
+      <h1>Enter something</h1>
+      <input id="input" placeholder="something" />
+      <div id="output">-</div>
+    </div>
+
+    <script>
+      let main = document.getElementById("main");
+      let input = document.getElementById("input");
+      let output = document.getElementById("output");
+      // const req = "[A-ZÆØÅa-zæøå]";
+      // const req = "+45";    ^[0-9]
+      const req = "^[A-ZÆØÅa-zæøå]";
+
+      input.addEventListener("input", (e) => {
+        let inputTxt = e.target.value;
+        console.log(inputTxt.match(req));
+        if (inputTxt.match(req) && inputTxt.length <= 7) {
+          output.innerText = inputTxt;
+          inputTxt.slice(0, -1);
+        }
+      });
+      input.addEventListener("blur", (e) => {
+        let inputTxt = "";
+        e.target.value = inputTxt;
+        output.innerText = inputTxt;
+      });
+    </script>
+  </body>
+</html>

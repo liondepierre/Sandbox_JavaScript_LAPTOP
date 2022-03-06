@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Lektier</title>
+  </head>
+  <body>
+    <div id="myList">
+      <ul>
+        <li>http://dr.dk</li>
+        <li>http://tv2.dk</li>
+        <li>Hello World!</li>
+        <li>http://eamv.dk</li>
+      </ul>
+    </div>
+    <script>
+      const expression =
+        /^https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z]{1,3}$/;
+
+      const links = document.getElementsByTagName("li");
+
+      for (const elem of links) {
+        const text = elem.innerText;
+        if (text.match(expression)) {
+          const a = document.createElement("a");
+          a.href = text;
+          a.appendChild(document.createTextNode(text));
+
+          elem.firstChild.remove();
+          elem.appendChild(a);
+        }
+      }
+    </script>
+  </body>
+</html>
