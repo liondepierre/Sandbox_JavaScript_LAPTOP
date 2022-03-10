@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <style></style>
+  <body>
+    <canvas> </canvas>
+
+    <script>
+      const canvas = document.querySelector("canvas");
+      const c = canvas.getContext("2d");
+      let mouseDown = false;
+
+      let img1 = document.createElement("img");
+      img1.setAttribute(
+        "src",
+        "https://aux.iconspalace.com/uploads/download-icon-256-361231194.png"
+      );
+      img1.setAttribute("width", "304");
+      img1.setAttribute("height", "228");
+      img1.setAttribute("alt", "Image Icon");
+      document.body.appendChild(img1);
+
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      const draw = (x, y) => {
+        c.beginPath();
+        c.arc(x, y, 10, 0, 2 * Math.PI, false);
+        c.fillStyle = "navy";
+        c.strokeStyle = "green";
+        c.fill();
+        c.stroke();
+      };
+
+      draw(40, 40);
+
+      canvas.addEventListener("mousemove", (e) => {
+        if (mouseDown) {
+          draw(e.offsetX, e.offsetY);
+          console.log(canvas);
+        }
+      });
+
+      canvas.addEventListener("mousedown", (e) => {
+        mouseDown = true;
+        if (mouseDown === true) {
+          draw(e.offsetX, e.offsetY);
+        }
+      });
+
+      canvas.addEventListener("mouseup", (e) => {
+        mouseDown = false;
+        if (mouseDown === false) {
+          draw(e.offsetX, e.offsetY);
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,19 +1,51 @@
 <!DOCTYPE html>
-<html>
-<body>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <style>
+      .main {
+        text-align: center;
+      }
+    </style>
 
-<canvas id="myCanvas" width="200" height="100" style="border:1px solid #d3d3d3;">
-Your browser does not support the HTML canvas tag.</canvas>
+    <div class="main">
+      <div id="clickable">
+        <a id="less" href="#">Less</a>
+        <a id="more" href="#">More</a>
+      </div>
+      <br />
 
-<script>
-var c = document.getElementById("myCanvas");
+      <div id="fields">
+        <input />
+        <br />
+        <br />
+        <input />
+        <br />
+        <br /><input />
+        <br />
+        <br />
+      </div>
+    </div>
 
-var ctx = c.getContext("2d");
-ctx.beginPath();
-ctx.arc(95,50,40,0,2*Math.PI);
-ctx.stroke();
-</script> 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-</body>
+    <script>
+      $(document).ready(function () {
+        $("#more").on("click", (e) => {
+          $("#fields input").length < 5 &&
+            $("#fields").append("<input>").append("<br>").append("<br>");
+        });
+
+        $("#less").on("click", (e) => {
+          $("#fields input:last-child").remove();
+          $("#fields br:last-child").remove();
+        });
+      });
+    </script>
+  </body>
 </html>
-

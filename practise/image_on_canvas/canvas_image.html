@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <body>
+
+    <img src="https://www.inzayn.com/assets/images/products/Y3APZY02.png">
+
+    <canvas
+      id="myCanvas"
+      width="320"
+      height="100"
+      style="border: 1px solid #d3d3d3"
+    ></canvas>
+    <script>
+      const c = document.getElementById("myCanvas");
+      const ctx = c.getContext("2d");
+      const image = document.querySelector("img");
+
+      c.height = window.innerHeight;
+      c.width = window.innerWidth;
+      c.style.backgroundColor = "lavender";
+
+      getImageOnCanvas();
+
+      function getImageOnCanvas(){
+        ctx.drawImage(image, 0, 0, 50, 50);
+
+      }
+
+
+    </script>
+  </body>
+</html>
