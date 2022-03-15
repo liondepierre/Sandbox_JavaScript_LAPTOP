@@ -1,50 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $(":image").css("background-color", "red");
+      });
+    </script>
+
+    <link
+      rel="stylesheet"
+      href="C:/Users/merta/Documents/Visual Studio Code Repos/sandbox/sandbox/styles/style.css"
+    />
   </head>
   <body>
-    <style>
-      .main {
-        text-align: center;
-      }
-    </style>
-
     <div class="main">
-      <div id="clickable">
-        <a id="less" href="#">Less</a>
-        <a id="more" href="#">More</a>
-      </div>
-      <br />
-
-      <div id="fields">
-        <input />
-        <br />
-        <br />
-        <input />
-        <br />
-        <br /><input />
-        <br />
-        <br />
-      </div>
+      <img
+        id="img"
+        src="https://preview.redd.it/ul81o9xnjgj41.jpg?auto=webp&s=b221d6570c2809e2fcb95c2a438bca2b3ed79871"
+        alt="Trulli"
+      />
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <script>
       $(document).ready(function () {
-        $("#more").on("click", (e) => {
-          $("#fields input").length < 5 &&
-            $("#fields").append("<input>").append("<br>").append("<br>");
+        $("#img").mouseover(function () {
+          $(this).css("opacity", "0");
+          console.log("Hello World")
+        });
+        $("#img").mouseleave(function () {
+          $(this).css("opacity", "1.0");
         });
 
-        $("#less").on("click", (e) => {
-          $("#fields input:last-child").remove();
-          $("#fields br:last-child").remove();
-        });
       });
     </script>
   </body>
